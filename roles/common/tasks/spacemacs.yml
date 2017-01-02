@@ -1,0 +1,17 @@
+---
+- name: Create .emacs.d directory
+  file:
+    path: ~/.emacs.d
+    state: directory
+    mode: "u=rwx,g=rx,o=rx"
+
+- name: Copy .spacemacs file
+  copy:
+    src: .spacemacs
+    dest: ~/
+    
+- name: Ensure spacemacs
+  git:
+    repo: git@github.com:syl20bnr/spacemacs.git
+    dest: ~/.emacs.d
+    accept_hostkey: true

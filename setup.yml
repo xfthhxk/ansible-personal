@@ -1,0 +1,8 @@
+---
+- name: Setup
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  roles:
+    - common
+    - dev

@@ -1,0 +1,14 @@
+---
+
+common_packages:
+  - ntp
+  - htop
+  - unzip
+  - tmux
+  - vim
+  - emacs24
+  - zsh
+  - exfat-fuse
+  - exfat-utils
+  - tree
+  - git
