@@ -12,3 +12,9 @@ common_packages:
   - exfat-utils
   - tree
   - git
+  - silversearcher-ag
+  - rlwrap
+  - traceroute
+  - nmap
+  - chromium-browser
+  - wireshark
