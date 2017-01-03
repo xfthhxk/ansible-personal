@@ -12,6 +12,6 @@
     
 - name: Ensure spacemacs
   git:
-    repo: git@github.com:syl20bnr/spacemacs.git
+    repo:  https://github.com/syl20bnr/spacemacs.git
     dest: ~/.emacs.d
     accept_hostkey: true

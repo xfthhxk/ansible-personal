@@ -18,3 +18,4 @@ common_packages:
   - nmap
   - chromium-browser
   - wireshark
+  - gnome
