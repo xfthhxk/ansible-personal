@@ -7,7 +7,6 @@ common_packages:
   - tmux
   - vim
   - emacs24
-  - zsh
   - exfat-fuse
   - exfat-utils
   - tree
