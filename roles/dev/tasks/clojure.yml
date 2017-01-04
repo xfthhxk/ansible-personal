@@ -1,0 +1,6 @@
+---
+- name: Ensure lein is available
+  get_url:
+    url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    dest: ~/bin/lein
+    mode: "u=rx"

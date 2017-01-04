@@ -17,5 +17,11 @@
 - include: spacemacs.yml
 - include: zsh.yml
 
+- name: Ensure ~/bin directory exists
+  file:
+    path: ~/bin
+    state: directory
+    mode: "u=rwx"
+
 - name: Set remote url to allow pushing to this repo via ssh
   raw: git remote set-url origin git@github.com:xfthhxk/ansible-personal.git
