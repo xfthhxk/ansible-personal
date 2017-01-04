@@ -18,3 +18,4 @@ common_packages:
   - chromium-browser
   - wireshark
   - gnome
+  - gcc-multilib # for running 32bit code ie kx's q
