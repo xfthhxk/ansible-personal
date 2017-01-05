@@ -1,0 +1,22 @@
+---
+- name: Add utils ppas
+  apt_repository:
+    repo: "{{ item }}"
+  with_items: "{{ utils_ppas }}"
+  become: true
+  become_user: root
+
+- name: Ensure APT cache is up to date
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+  become_user: root
+
+- name: Install utils packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ utils_packages }}"
+  become: true
+  become_user: root

@@ -1,0 +1,6 @@
+---
+utils_ppas:
+  - ppa:nathan-renniewaldock/flux
+
+utils_packages:
+  - fluxgui
