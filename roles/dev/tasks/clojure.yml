@@ -4,3 +4,9 @@
     url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     dest: ~/bin/lein
     mode: "u=rx"
+
+- name: Ensure boot is available
+  get_url:
+    url: https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
+    dest: ~/bin/boot
+    mode: "u=rx"
