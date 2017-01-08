@@ -10,3 +10,8 @@
     url: https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
     dest: ~/bin/boot
     mode: "u=rx"
+
+- name: Copy over boot config
+  copy:
+    src: .boot
+    dest: ~/
