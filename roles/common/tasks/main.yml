@@ -17,6 +17,10 @@
 - include: spacemacs.yml
 - include: zsh.yml
 
+- name: Install aws cli
+  raw: pip install awscli
+
+
 - name: Ensure ~/bin directory exists
   file:
     path: ~/bin

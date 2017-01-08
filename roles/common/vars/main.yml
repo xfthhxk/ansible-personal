@@ -19,3 +19,4 @@ common_packages:
   - wireshark
   - gnome
   - gcc-multilib # for running 32bit code ie kx's q
+  - python-pip
