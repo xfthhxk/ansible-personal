@@ -20,3 +20,6 @@ common_packages:
   - gnome
   - gcc-multilib # for running 32bit code ie kx's q
   - python-pip
+
+remove_packages:
+  - webbrowser-app

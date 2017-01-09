@@ -14,6 +14,14 @@
   become: true
   become_user: root
 
+- name: Uninstall unwanted packages
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ remove_packages }}"
+  become: true
+  become_user: root
+
 - include: spacemacs.yml
 - include: zsh.yml
 
