@@ -203,7 +203,8 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
-  (setq mac-command-modifier 'meta)
+  (if (eq system-type 'darwin)
+      (setq mac-command-modifier 'meta))
   (setq indent-tabs-mode nil) ; use space instead of tab
   (my-setup-indent 2))
 
