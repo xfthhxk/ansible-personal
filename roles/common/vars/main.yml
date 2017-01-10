@@ -1,12 +1,15 @@
 ---
 
+utils_ppas:
+  - ppa:nathan-renniewaldock/flux
+  - ppa:kelleyk/emacs
+
 common_packages:
   - ntp
   - htop
   - unzip
   - tmux
   - vim
-  - emacs24
   - exfat-fuse
   - exfat-utils
   - tree
@@ -20,6 +23,11 @@ common_packages:
   - gnome
   - gcc-multilib # for running 32bit code ie kx's q
   - python-pip
+  - fluxgui
+  - terminator
+  - guake
+  - emacs25
 
 remove_packages:
   - webbrowser-app
+  - emacs24
