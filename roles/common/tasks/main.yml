@@ -25,6 +25,14 @@
 - include: spacemacs.yml
 - include: zsh.yml
 
+- name: Copy /etc/crda for iw to work
+  copy:
+    src: crda
+    dest: /etc/crda
+  become: true
+  become_user: root
+
+
 - name: Install aws cli
   raw: pip install awscli
 
