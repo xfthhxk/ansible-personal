@@ -1,4 +1,11 @@
 ---
+- name: Add additional ppas
+  apt_repository:
+    repo: "{{ item }}"
+  with_items: "{{ utils_ppas }}"
+  become: true
+  become_user: root
+
 - name: Ensure APT cache is up to date
   apt:
     update_cache: yes
