@@ -3,6 +3,8 @@
 utils_ppas:
   - ppa:nathan-renniewaldock/flux
   - ppa:kelleyk/emacs
+  - ppa:ansible/ansible
+
 
 common_packages:
   - ntp
@@ -28,6 +30,7 @@ common_packages:
   - guake
   - emacs25
   - okular
+  - ansible
 
 remove_packages:
   - webbrowser-app
