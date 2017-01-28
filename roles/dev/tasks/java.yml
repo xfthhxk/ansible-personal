@@ -3,19 +3,16 @@
   apt_repository:
     repo: ppa:webupd8team/java
   become: true
-  become_user: root
 
 - name: Accept Java license
   shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
   become: true
-  become_user: root
 
 - name: Ensure APT cache is up to date
   apt:
     update_cache: yes
     cache_valid_time: 3600
   become: true
-  become_user: root
 
 - name: Install Oracle Java 8
   become: yes

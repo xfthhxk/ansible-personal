@@ -29,6 +29,8 @@ common_packages:
   - guake
   - emacs25
   - okular
+  - apt-transport-https # allow apt to use https repos
+  - ca-certificates
 
 remove_packages:
   - webbrowser-app

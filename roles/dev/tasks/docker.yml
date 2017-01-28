@@ -1,0 +1,25 @@
+---
+- name: Setup Docker GPG key
+  apt_key:
+    url:  https://yum.dockerproject.org/gpg
+    state: present
+  become: true
+
+- name: Setup Docker apt repository
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo/ ubuntu-{{ ansible_lsb.codename }} main
+  become: true
+
+- name: Ensure APT cache is up to date
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: Install Docker related packages
+  apt: name={{item}} state=latest
+  with_items:
+    - linux-image-extra-{{ ansible_kernel }}
+    - linux-image-extra-virtual
+    - docker-engine
+  become: true

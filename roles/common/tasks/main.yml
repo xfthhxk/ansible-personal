@@ -4,14 +4,12 @@
     repo: "{{ item }}"
   with_items: "{{ utils_ppas }}"
   become: true
-  become_user: root
 
 - name: Ensure APT cache is up to date
   apt:
     update_cache: yes
     cache_valid_time: 3600
   become: true
-  become_user: root
 
 - name: Install common packages
   apt:
@@ -19,7 +17,6 @@
     state: latest
   with_items: "{{ common_packages }}"
   become: true
-  become_user: root
 
 - name: Uninstall unwanted packages
   apt:
@@ -27,7 +24,6 @@
     state: absent
   with_items: "{{ remove_packages }}"
   become: true
-  become_user: root
 
 - include: spacemacs.yml
 - include: zsh.yml
@@ -37,7 +33,6 @@
     src: crda
     dest: /etc/crda
   become: true
-  become_user: root
 
 
 - name: Install aws cli

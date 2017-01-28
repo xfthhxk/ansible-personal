@@ -4,12 +4,10 @@
     name: zsh
     state: latest
   become: true
-  become_user: root
 
 - name: Make zsh the login shell
   raw: chsh -s /usr/bin/zsh amehta
   become: true
-  become_user: root
 
 # ignore errors because everything works but the script tries to set the login shell to zsh
 - name: Install oh-my-zsh
