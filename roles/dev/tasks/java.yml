@@ -15,7 +15,7 @@
   become: true
 
 - name: Install Oracle Java 8
-  become: yes
+  become: true
   apt: name={{item}} state=latest
   with_items:
     - oracle-java8-installer

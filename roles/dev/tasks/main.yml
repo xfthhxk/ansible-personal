@@ -3,4 +3,5 @@
 - include: clojure.yml
 - include: go.yml
 - include: postgres.yml
+- include: node.yml
 - include: docker.yml

@@ -1,0 +1,28 @@
+---
+- name: Add nodesource repo
+  raw: curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+  become: true
+
+- name: Setup Yarn GPG key
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    state: present
+  become: true
+
+- name: Setup Yarn apt repository
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+  become: true
+
+- name: Ensure APT cache is up to date
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: Install nodejs and yarn
+  become: true
+  apt: name={{item}} state=latest
+  with_items:
+    - nodejs
+    - yarn
