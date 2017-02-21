@@ -1,0 +1,22 @@
+---
+- name: Setup Google GPG key
+  apt_key:
+    url:  https://dl-ssl.google.com/linux/linux_signing_key.pub
+    state: present
+  become: true
+
+
+- name: Setup Docker apt repository
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+  become: true
+
+- name: Ensure APT cache is up to date
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: Install Chrome
+  apt: name=google-chrome-stable state=latest
+  become: true
