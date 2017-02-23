@@ -5,3 +5,4 @@ go_packages:
 postgres_packages:
   - postgresql
   - postgis
+  - postgresql-9.5-citus
