@@ -4,3 +4,4 @@ go_packages:
 
 postgres_packages:
   - postgresql
+  - postgis
