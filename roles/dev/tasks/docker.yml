@@ -22,4 +22,10 @@
     - linux-image-extra-{{ ansible_kernel }}
     - linux-image-extra-virtual
     - docker-engine
+    - docker-compose
+    - virtualbox
   become: true
+
+#- name: Install Docker Machine
+#  raw: docker-machine --version || curl -L https://github.com/docker/machine/releases/download/v0.11.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && chmod +x /tmp/docker-machine && cp /tmp/docker-machine /usr/local/bin/docker-machine
+#  become: true

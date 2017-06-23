@@ -1,0 +1,29 @@
+---
+- name: Playbook settings
+  shell: "echo miniconda_installer: {{ miniconda_installer }}, miniconda_install_dir: {{ miniconda_install_dir }}, env: {{ miniconda_env }}"
+  changed_when: False
+- name: Download installer /tmp/{{ miniconda_installer }}
+  get_url:
+    url: "https://repo.continuum.io/miniconda/{{ miniconda_installer }}"
+    dest: /tmp/{{ miniconda_installer }}
+    mode: 770
+- name: Run installer
+  command: '/bin/bash "/tmp/{{ miniconda_installer }}" -b -p "{{ miniconda_install_dir }}"'
+  args:
+    creates: "{{ miniconda_install_dir }}"
+- name: conda environment file /tmp/{{ miniconda_env.name }}-environment.yml is created
+  copy:
+    content="{{ miniconda_env | to_yaml(default_flow_style=False) }}"
+    dest="/tmp/{{ miniconda_env.name }}-environment.yml"
+- name: conda environment {{ miniconda_env.name }} is up-to-date
+  command:
+    '"{{ miniconda_install_dir }}/bin/conda" env update -n "{{ miniconda_env.name }}" -f "/tmp/{{ miniconda_env.name }}-environment.yml"'
+  register: miniconda_env_update
+  when: (miniconda_env.name == 'root') or ('"skipped" in miniconda_env_create.stdout')
+  changed_when: '"COMPLETE" in miniconda_env_update.stdout'
+- name: add conda to profile path
+  blockinfile:
+    dest: ~/.profile
+    content: |
+      PATH="$HOME/miniconda/bin:$PATH"
+      source activate
