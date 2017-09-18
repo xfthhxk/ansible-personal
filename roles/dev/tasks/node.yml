@@ -1,6 +1,6 @@
 ---
 - name: Add nodesource repo
-  raw: curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+  raw: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   become: true
 
 - name: Setup Yarn GPG key
