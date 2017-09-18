@@ -26,6 +26,21 @@
     - virtualbox
   become: true
 
+
+- name: Setup docker group
+  group:
+    name: docker
+    system: yes
+    state: present
+  become: true
+
+- name: Add current user to docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: true
+  become: true
+
 #- name: Install Docker Machine
 #  raw: docker-machine --version || curl -L https://github.com/docker/machine/releases/download/v0.11.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && chmod +x /tmp/docker-machine && cp /tmp/docker-machine /usr/local/bin/docker-machine
 #  become: true
