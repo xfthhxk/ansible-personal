@@ -28,6 +28,7 @@
 - include: spacemacs.yml
 - include: zsh.yml
 - include: chrome.yml
+- include: flyway.yml
 
 - name: Copy /etc/crda for iw to work
   copy:
