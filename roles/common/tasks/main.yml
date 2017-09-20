@@ -30,6 +30,7 @@
 - include: chrome.yml
 - include: flyway.yml
 
+
 - name: Copy /etc/crda for iw to work
   copy:
     src: crda
@@ -49,3 +50,14 @@
 
 - name: Set remote url to allow pushing to this repo via ssh
   raw: git remote set-url origin git@github.com:xfthhxk/ansible-personal.git
+
+- name: Copy .gitconfig if needed
+  copy:
+    src: .gitconfig
+    dest: ~/
+    force: false
+
+- name: Copy .gitignore_global
+  copy:
+    src: .gitignore_global
+    dest: ~/

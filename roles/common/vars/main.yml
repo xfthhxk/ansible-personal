@@ -31,6 +31,8 @@ common_packages:
   - okular
   - apt-transport-https # allow apt to use https repos
   - ca-certificates
+  - strongswan
+  - network-manager-strongswan
 
 remove_packages:
   - webbrowser-app

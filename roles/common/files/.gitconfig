@@ -1,0 +1,29 @@
+[user]
+	name =
+	email =
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = auto
+[color "status"]
+	changed = red
+	added = cyan
+	untracked = yellow
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
+[color "branch"]
+	local = yellow
+	remote = green
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lc = log --stat --abbrev-commit --pretty=format:'%C(magenta)commit %h%Creset -%C(cyan)%d %C(yellow)%s %Cgreen(%cr) %C(bold blue)(%an)%Creset'
+	co = checkout
+[core]
+	excludesfile = ~/.gitignore_global
+[rerere]
+	enabled = true
+	autoupdate = true
