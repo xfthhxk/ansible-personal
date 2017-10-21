@@ -3,6 +3,8 @@ go_packages:
   - golang-go
 
 postgres_packages:
-  - postgresql
+  - postgresql-9.6
   - postgis
   - postgresql-9.6-citus
+
+flyway_version: 4.2.0

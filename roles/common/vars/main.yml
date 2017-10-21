@@ -39,6 +39,3 @@ remove_packages:
   - emacs24
   - evince
   - openjdk-8-jdk
-
-
-flyway_version: 4.2.0

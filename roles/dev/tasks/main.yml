@@ -5,3 +5,10 @@
 - include: postgres.yml
 - include: node.yml
 - include: docker.yml
+- include: flyway.yml
+
+- name: Install Phantomjs
+  apt:
+    name: phantomjs
+    state: latest
+  become: true
