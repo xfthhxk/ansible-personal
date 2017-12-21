@@ -1,13 +1,13 @@
 ---
 - name: Setup Docker GPG key
   apt_key:
-    url:  https://yum.dockerproject.org/gpg
+    url:   https://download.docker.com/linux/ubuntu/gpg
     state: present
   become: true
 
 - name: Setup Docker apt repository
   apt_repository:
-    repo: deb https://apt.dockerproject.org/repo/ ubuntu-{{ ansible_lsb.codename }} main
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
   become: true
 
 - name: Ensure APT cache is up to date
@@ -19,12 +19,14 @@
 - name: Install Docker related packages
   apt: name={{item}} state=latest
   with_items:
-    - linux-image-extra-{{ ansible_kernel }}
-    - linux-image-extra-virtual
-    - docker-engine
-    - docker-compose
-    - virtualbox
+    - docker-ce
   become: true
+
+- name: Install Docker Compose
+  raw: curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-x86_64 -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+  become: true
+  tags:
+    - docker
 
 
 - name: Setup docker group
@@ -40,7 +42,3 @@
     groups: docker
     append: true
   become: true
-
-#- name: Install Docker Machine
-#  raw: docker-machine --version || curl -L https://github.com/docker/machine/releases/download/v0.11.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && chmod +x /tmp/docker-machine && cp /tmp/docker-machine /usr/local/bin/docker-machine
-#  become: true

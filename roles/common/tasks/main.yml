@@ -25,10 +25,9 @@
   with_items: "{{ remove_packages }}"
   become: true
 
-- include: spacemacs.yml
-- include: zsh.yml
-- include: chrome.yml
-- include: flyway.yml
+- import_tasks: spacemacs.yml
+- import_tasks: zsh.yml
+- import_tasks: chrome.yml
 
 
 - name: Copy /etc/crda for iw to work

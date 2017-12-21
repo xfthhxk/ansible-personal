@@ -1,0 +1,58 @@
+---
+- name: Setup GCP GPG Key
+  apt_key:
+    url:   https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  become: true
+  tags:
+    - gcp
+
+- name: Setup GCP apt repository
+  apt_repository:
+    repo: deb https://packages.cloud.google.com/apt cloud-sdk-{{ ansible_lsb.codename }} main
+  become: true
+  tags:
+    - gcp
+
+
+- name: Ensure APT cache is up to date
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+  tags:
+    - gcp
+
+- name: Install GCP Cloud SDK Command Line Tools
+  apt: name={{item}} state=latest
+  with_items:
+    - google-cloud-sdk
+    - kubectl
+    - google-cloud-sdk-datastore-emulator
+    - google-cloud-sdk-pubsub-emulator
+  become: true
+  tags:
+    - gcp
+
+
+- name: Install Kubernetes Kompose
+  get_url:
+    url: https://github.com/kubernetes/kompose/releases/download/v1.8.0/kompose-linux-amd64
+    dest: /usr/local/bin/kompose
+    mode: 401
+  become: true
+  tags:
+    - kompose
+
+
+- name: Install Minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-linux-amd64
+    dest: /usr/local/bin/minikube
+    mode: 401
+  become: true
+  tags:
+    - minikube
+
+- name: Install apache-libcloud for gce
+  raw: pip install apache-libcloud

@@ -6,12 +6,12 @@
   with_items: "{{ postgres_packages }}"
   become: true
 
-- name: Citus preload library.
-  raw: pg_conftool 9.6 main set shared_preload_libraries citus
-  become: true
+# - name: Citus preload library.
+#   raw: pg_conftool 9.6 main set shared_preload_libraries citus
+#   become: true
 
-- name: Restart Postgres
-  systemd:
-    name: postgresql
-    state: restarted
-  become: true
+# - name: Restart Postgres
+#   systemd:
+#     name: postgresql
+#     state: restarted
+#   become: true

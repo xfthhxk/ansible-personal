@@ -1,14 +1,33 @@
 ---
-- include: java.yml
-- include: clojure.yml
-- include: go.yml
-- include: postgres.yml
-- include: node.yml
-- include: docker.yml
-- include: flyway.yml
+- import_tasks: java.yml
+- import_tasks: clojure.yml
+- import_tasks: go.yml
+- import_tasks: node.yml
+- import_tasks: docker.yml
+- import_tasks: flyway.yml
+- import_tasks: gcp.yml
+- import_tasks: terraform.yml
+- import_tasks: helm.yml
+
 
 - name: Install Phantomjs
   apt:
     name: phantomjs
     state: latest
+  become: true
+
+- name: Install Chrome WebDriver
+  unarchive:
+    src: https://chromedriver.storage.googleapis.com/{{ chromedriver_version }}/chromedriver_linux64.zip
+    dest: /usr/local/bin
+    remote_src: true
+  become: true
+  tags:
+    - selenium
+
+- name: Install Gecko WebDriver
+  unarchive:
+    src: https://github.com/mozilla/geckodriver/releases/download/v{{ geckodriver_version }}/geckodriver-v{{ geckodriver_version }}-linux64.tar.gz
+    dest: /usr/local/bin
+    remote_src: true
   become: true

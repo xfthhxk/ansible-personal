@@ -1,0 +1,27 @@
+---
+- name: Create temp directory for helm
+  file:
+    path: /tmp/helm-{{ helm_version }}
+    state: directory
+  tags: helm
+
+- name: Download Kubernetes Helm client
+  unarchive:
+    src:  https://storage.googleapis.com/kubernetes-helm/helm-v{{ helm_version }}-linux-amd64.tar.gz
+    dest: /tmp/helm-{{ helm_version }}
+    remote_src: true
+  tags: helm
+
+- name: Install helm to /usr/local/bin
+  copy:
+    src: /tmp/helm-{{ helm_version }}/linux-amd64/helm
+    dest: /usr/local/bin/
+    mode: 755
+  become: true
+  tags: helm
+
+- name: Delete helm temp directory
+  file:
+    path: /tmp/helm-{{ helm_version }}
+    state: absent
+  tags: helm

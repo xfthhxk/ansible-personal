@@ -2,7 +2,6 @@
 
 utils_ppas:
   - ppa:nathan-renniewaldock/flux
-  - ppa:kelleyk/emacs
 
 
 common_packages:
@@ -22,6 +21,7 @@ common_packages:
   - chromium-browser
   - wireshark
   - gnome
+  - xclip
   - gcc-multilib # for running 32bit code ie kx's q
   - python-pip
   - fluxgui
@@ -33,6 +33,8 @@ common_packages:
   - ca-certificates
   - strongswan
   - network-manager-strongswan
+  - software-properties-common
+  - lm-sensors
 
 remove_packages:
   - webbrowser-app

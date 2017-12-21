@@ -7,4 +7,9 @@ postgres_packages:
   - postgis
   - postgresql-9.6-citus
 
-flyway_version: 4.2.0
+flyway_version: 5.1.4
+chromedriver_version: 2.37
+geckodriver_version: 0.19.1
+terraform_version: 0.11.7
+clojure_cli_version: 1.9.0.394
+helm_version: 2.9.1
