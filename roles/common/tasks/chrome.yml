@@ -6,7 +6,7 @@
   become: true
 
 
-- name: Setup Docker apt repository
+- name: Setup Google apt repository
   apt_repository:
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
   become: true

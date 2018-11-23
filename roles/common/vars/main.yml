@@ -1,12 +1,9 @@
 ---
 
-utils_ppas:
-  - ppa:nathan-renniewaldock/flux
-
-
 common_packages:
   - ntp
   - htop
+  - curl
   - unzip
   - tmux
   - vim
@@ -24,7 +21,6 @@ common_packages:
   - xclip
   - gcc-multilib # for running 32bit code ie kx's q
   - python-pip
-  - fluxgui
   - terminator
   - guake
   - emacs25
