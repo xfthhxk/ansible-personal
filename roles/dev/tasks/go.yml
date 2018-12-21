@@ -1,7 +1,7 @@
 ---
 - name: Ensure go is installed
   apt:
-    name: "{{ item }}"
+    name:
+      - golang-go
     state: present
-  with_items: "{{ go_packages }}"
   become: true

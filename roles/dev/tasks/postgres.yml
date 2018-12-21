@@ -1,17 +1,10 @@
 ---
 - name: Ensure postgres client is installed
   apt:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ postgres_packages }}"
+    name:
+      - postgresql-10
+      - postgis
+    state: latest
   become: true
-
-# - name: Citus preload library.
-#   raw: pg_conftool 9.6 main set shared_preload_libraries citus
-#   become: true
-
-# - name: Restart Postgres
-#   systemd:
-#     name: postgresql
-#     state: restarted
-#   become: true
+  tags:
+    - postgres

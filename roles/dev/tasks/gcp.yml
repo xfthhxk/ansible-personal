@@ -24,12 +24,14 @@
     - gcp
 
 - name: Install GCP Cloud SDK Command Line Tools
-  apt: name={{item}} state=latest
-  with_items:
-    - google-cloud-sdk
-    - kubectl
-    - google-cloud-sdk-datastore-emulator
-    - google-cloud-sdk-pubsub-emulator
+  apt:
+    name:
+      - google-cloud-sdk
+      - kubectl
+      - google-cloud-sdk-datastore-emulator
+      - google-cloud-sdk-pubsub-emulator
+      - google-cloud-sdk-cloud-build-local
+    state: latest
   become: true
   tags:
     - gcp

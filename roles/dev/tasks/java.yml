@@ -1,23 +1,14 @@
 ---
-- name: Add ppa for oracle java
-  apt_repository:
-    repo: ppa:webupd8team/java
-  become: true
-
-- name: Accept Java license
-  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-  become: true
-
 - name: Ensure APT cache is up to date
   apt:
     update_cache: yes
     cache_valid_time: 3600
   become: true
 
-- name: Install Oracle Java 8
+- name: Install Open JDK 11
   become: true
-  apt: name={{item}} state=latest
-  with_items:
-    - oracle-java8-installer
-    - ca-certificates
-    - oracle-java8-set-default
+  apt:
+    name: openjdk-11-jdk
+    state: latest
+  tags:
+    - jdk11

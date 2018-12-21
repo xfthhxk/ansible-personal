@@ -1,12 +1,4 @@
 ---
-go_packages:
-  - golang-go
-
-postgres_packages:
-  - postgresql-9.6
-  - postgis
-  - postgresql-9.6-citus
-
 flyway_version: 5.1.4
 chromedriver_version: 2.37
 geckodriver_version: 0.19.1
