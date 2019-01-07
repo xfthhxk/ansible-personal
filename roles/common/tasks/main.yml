@@ -58,3 +58,11 @@
   copy:
     src: .gitignore_global
     dest: ~/
+
+- name: Install Slack
+  shell: snap install slack --classic
+  become: true
+
+- name: Install Signal
+  shell: snap install signal-desktop
+  become: true
