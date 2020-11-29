@@ -17,13 +17,13 @@
     dest="/tmp/{{ miniconda_env.name }}-environment.yml"
 - name: conda environment {{ miniconda_env.name }} is up-to-date
   command:
-    '"{{ miniconda_install_dir }}/bin/conda" env update -n "{{ miniconda_env.name }}" -f "/tmp/{{ miniconda_env.name }}-environment.yml"'
+    '"{{ conda }}" env update -n "{{ miniconda_env.name }}" -f "/tmp/{{ miniconda_env.name }}-environment.yml"'
   register: miniconda_env_update
   when: (miniconda_env.name == 'root') or ('"skipped" in miniconda_env_create.stdout')
   changed_when: '"COMPLETE" in miniconda_env_update.stdout'
-- name: add conda to profile path
-  blockinfile:
-    dest: ~/.profile
-    content: |
-      PATH="$HOME/miniconda/bin:$PATH"
-      source activate
+- name: init conda
+  raw: "{{ conda }} init zsh"
+- name: install jupyter notebook
+  raw: "{{ conda }} install -c conda-forge jupyterlab"
+- name: install numpy
+  raw: "{{ conda }} install -c anaconda numpy"

@@ -27,8 +27,7 @@
   apt:
     name:
       - google-cloud-sdk
-      - kubectl
-      - google-cloud-sdk-datastore-emulator
+      - google-cloud-sdk-firestore-emulator
       - google-cloud-sdk-pubsub-emulator
       - google-cloud-sdk-cloud-build-local
     state: latest
@@ -36,25 +35,15 @@
   tags:
     - gcp
 
-
-- name: Install Kubernetes Kompose
-  get_url:
-    url: https://github.com/kubernetes/kompose/releases/download/v1.8.0/kompose-linux-amd64
-    dest: /usr/local/bin/kompose
-    mode: 401
-  become: true
-  tags:
-    - kompose
-
-
-- name: Install Minikube
-  get_url:
-    url: https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-linux-amd64
-    dest: /usr/local/bin/minikube
-    mode: 401
-  become: true
-  tags:
-    - minikube
-
 - name: Install apache-libcloud for gce
   raw: pip install apache-libcloud
+  tags:
+    - gcp
+
+- name: Install firebase tools
+  npm:
+    name: firebase-tools
+    global: yes
+  become: true
+  tags:
+    - gcp

@@ -4,4 +4,3 @@ chromedriver_version: 2.37
 geckodriver_version: 0.19.1
 terraform_version: 0.11.7
 clojure_cli_version: 1.10.0.411
-helm_version: 2.9.1

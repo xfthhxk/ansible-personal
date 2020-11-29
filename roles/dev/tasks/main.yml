@@ -7,7 +7,6 @@
 - import_tasks: flyway.yml
 - import_tasks: gcp.yml
 - import_tasks: terraform.yml
-- import_tasks: helm.yml
 
 - name: Install Insomnia a REST and GraphQL client
   shell: snap install insomnia

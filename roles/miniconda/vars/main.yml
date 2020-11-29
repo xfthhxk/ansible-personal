@@ -1,7 +1,8 @@
 ---
 miniconda_installer: Miniconda3-latest-Linux-x86_64.sh
 miniconda_install_dir: "{{ ansible_env.HOME }}/miniconda"
+conda: "{{ miniconda_install_dir }}/bin/conda"
 miniconda_env:
   name: root
   dependencies:
-    - python=3.5
+    - python=3.6.8
