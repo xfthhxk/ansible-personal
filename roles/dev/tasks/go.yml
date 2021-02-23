@@ -5,3 +5,5 @@
       - golang-go
     state: present
   become: true
+  tags:
+    - golang

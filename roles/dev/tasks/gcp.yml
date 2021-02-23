@@ -1,49 +1,15 @@
 ---
-- name: Setup GCP GPG Key
-  apt_key:
-    url:   https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    state: present
-  become: true
-  tags:
-    - gcp
-
-- name: Setup GCP apt repository
-  apt_repository:
-    repo: deb https://packages.cloud.google.com/apt cloud-sdk-{{ ansible_lsb.codename }} main
+- name: Install GCP SDK
+  shell: snap install google-cloud-sdk --classic
   become: true
   tags:
     - gcp
 
 
-- name: Ensure APT cache is up to date
-  apt:
-    update_cache: yes
-    cache_valid_time: 3600
-  become: true
-  tags:
-    - gcp
-
-- name: Install GCP Cloud SDK Command Line Tools
-  apt:
-    name:
-      - google-cloud-sdk
-      - google-cloud-sdk-firestore-emulator
-      - google-cloud-sdk-pubsub-emulator
-      - google-cloud-sdk-cloud-build-local
-    state: latest
-  become: true
-  tags:
-    - gcp
-
-- name: Install apache-libcloud for gce
-  raw: pip install apache-libcloud
-  tags:
-    - gcp
-
-- name: Install firebase tools
-  npm:
-    name: firebase-tools
-    global: yes
-  become: true
-  tags:
-    - gcp
+# - name: Install firebase tools
+#   npm:
+#    name: firebase-tools
+#    global: yes
+#   become: true
+#   tags:
+#     - gcp

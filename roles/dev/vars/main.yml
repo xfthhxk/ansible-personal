@@ -1,6 +1,5 @@
 ---
-flyway_version: 5.1.4
-chromedriver_version: 2.37
-geckodriver_version: 0.19.1
+chromedriver_version: 88.0.4324.96
+geckodriver_version: 0.29.0
 terraform_version: 0.11.7
-clojure_cli_version: 1.10.0.411
+clojure_cli_version: 1.10.2.790

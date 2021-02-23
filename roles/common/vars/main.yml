@@ -20,20 +20,16 @@ common_packages:
   - gnome
   - xclip
   - gcc-multilib # for running 32bit code ie kx's q
-  - python-pip
   - terminator
   - guake
-  - emacs25
   - okular
   - apt-transport-https # allow apt to use https repos
   - ca-certificates
-  - strongswan
-  - network-manager-strongswan
   - software-properties-common
   - lm-sensors
 
 remove_packages:
   - webbrowser-app
-  - emacs24
   - evince
   - openjdk-8-jdk
+  - emacs

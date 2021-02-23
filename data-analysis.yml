@@ -1,7 +1,0 @@
----
-- name: Data Analysis Tools
-  hosts: localhost
-  connection: local
-  gather_facts: yes
-  roles:
-    - miniconda

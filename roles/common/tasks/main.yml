@@ -21,18 +21,6 @@
 - import_tasks: zsh.yml
 - import_tasks: chrome.yml
 
-
-- name: Copy /etc/crda for iw to work
-  copy:
-    src: crda
-    dest: /etc/crda
-  become: true
-
-
-- name: Install aws cli
-  raw: pip install awscli
-
-
 - name: Ensure ~/bin directory exists
   file:
     path: ~/bin
@@ -58,6 +46,10 @@
   copy:
     src: .gitignore_global
     dest: ~/
+
+- name: Install emacs
+  shell: snap install emacs --classic
+  become: true
 
 - name: Install Slack
   shell: snap install slack --classic

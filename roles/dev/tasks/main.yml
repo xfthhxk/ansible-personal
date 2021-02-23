@@ -4,24 +4,17 @@
 - import_tasks: go.yml
 - import_tasks: node.yml
 - import_tasks: docker.yml
-- import_tasks: flyway.yml
 - import_tasks: gcp.yml
 - import_tasks: terraform.yml
-
-- name: Install Insomnia a REST and GraphQL client
-  shell: snap install insomnia
-  # snap:
-  #   name:
-  #     - insomnia
-  become: true
-  tags:
-    - gql
+- import_tasks: postgres.yml
 
 - name: Install Phantomjs
   apt:
     name: phantomjs
     state: latest
   become: true
+  tags:
+    - selenium
 
 - name: Install Chrome WebDriver
   unarchive:
@@ -38,3 +31,5 @@
     dest: /usr/local/bin
     remote_src: true
   become: true
+  tags:
+    - selenium
